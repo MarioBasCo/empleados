@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "tarjetas",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

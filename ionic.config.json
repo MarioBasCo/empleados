@@ -1,0 +1,7 @@
+{
+  "name": "tarjetas",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
