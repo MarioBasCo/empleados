@@ -1,20 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
+<ion-header>
+  <ion-toolbar color="ligth">
+    <ion-title class="ion-text-center">
+      💼
+      App Empleados
+      💼
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-card>
+    <ion-card-content>
+      <div class="ion-text-center"> <h1>Formulario de Registro</h1> </div>
+      <form id="form" #formulario="ngForm" (ngSubmit)="altaUsuario()">
+        <ion-input type="text" placeholder="Ingrese su nombre" [(ngModel)]="empleado.nombre" name="nombre"></ion-input>
+        <ion-input type="text" placeholder="Ingrese su cargo" [(ngModel)]="empleado.cargo" name="cargo"></ion-input>
+        <ion-input type="number" placeholder="Ingrese su salario" [(ngModel)]="empleado.salario" name="salario"></ion-input>
+        <ion-row>
+          <ion-col>
+            <ion-button type="reset" expand="block" shape="round" fill="outline" color="danger">Cancelar</ion-button>
+          </ion-col>
+          <ion-col>
+            <ion-button type="submit" [disabled]="formulario.invalid" expand="block" shape="round" fill="outline">Guardar</ion-button>
+          </ion-col>
+        </ion-row>
+      </form>
+    </ion-card-content>
+  </ion-card>
+  
+  
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <h5 class="ion-text-center">Lista de Empleados</h5>
+  <ion-card *ngFor="let user of listaDeUsuarios" style="border-left: 5px solid var(--ion-color-secondary);">
+    <ion-card-content>
+      <p><b>Nombre</b> {{user.nombre}}</p>
+      <p><b>Cargo:</b> {{user.cargo}}</p>
+      <p><b>Salario:</b> {{user.salario | currency:'USD'}}</p>
+      <ion-row>
+        <ion-col class="ion-text-center">
+          <ion-button fill="outline" color="secondary" shape="round" (click)="modificar(user)">Editar</ion-button>
+        </ion-col>
+        <ion-col class="ion-text-center">
+          <ion-button color="primary" shape="round" color="dark" (click)="eliminar(user?.id)">Eliminar</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+
 </ion-content>
